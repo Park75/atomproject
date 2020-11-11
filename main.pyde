@@ -78,3 +78,35 @@ def getDefaultCoordinateY_Shell2():
 
 def getDefaultCoordinateY_Shell3():
     return 175
+
+#Möglichkeit für Buttons
+
+#1. Mouseposition
+if((mouseX>40) and (mouseX<80) and (mouseY>20) and (mouseY<80)):
+        fill(123)
+    else:
+        fill(0) #Hier Beschriftung von Atom
+    rect(40,20,40,60)
+    
+    if((mouseX>100) and (mouseX<140) and (mouseY>20) and (mouseY<80)):
+        fill(123)
+    else:
+        fill(0) #Hier Beschriftung von Atom
+    rect(100,20,40,60)
+    
+#2.Keypress (Einfachste Lösung)
+    #if (keyPressed):   # If the key is pressed,
+        #line(20, 20, 80, 80)   # draw a line
+    #else:   # Otherwise,
+        #rect(40, 40, 20, 20)   # draw a rectangle
+        
+#3.Mouseclicked (Kompliziert in Python)
+ #fill(value)    
+    #rect(40, 100, 50, 50)
+        
+#def mouseClicked():
+    #global value
+    #if value == 0:
+        #value = 255
+    #else:
+        #value = 0
