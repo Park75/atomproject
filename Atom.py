@@ -12,7 +12,6 @@ class Atom:
     
     def getAllElectronCoordinate(self):
         allElectronCoordinate = [];
-        print(self.anzElectronShell1)
         for atomNr in range(0, self.anzElectronShell1):   
             allElectronCoordinate.append(default_ElectronCoordinateShell1[atomNr])
         for atomNr in range(0, self.anzElectronShell2):    
