@@ -1,6 +1,7 @@
+# X und Y-Koordinaten der einzelnen Elektronen aufgeteilt auf die Schalen
 default_ElectronCoordinateShell1 = [[0, 75], [0, -75]];
 default_ElectronCoordinateShell2 = [[115.5, 48], [47.8, 115.5], [115.5, -48], [47.8, -115.5], [-115.5, 48], [-47.8, 115.5], [-115.5, -48], [-47.8, -115.5]];
-default_ElectronCoordinateShell3 = [[175, 0], [-175, 0]];
+default_ElectronCoordinateShell3 = [[175, 0], [-175, 0], [0, 175], [0, -175]];
 
 class Atom:
     def __init__ (self, anzShells, anzElectronShell1, anzElectronShell2, anzElectronShell3):
