@@ -101,16 +101,8 @@ def control():
     if((mouseX>420) and (mouseX<440) and (mouseY>290) and (mouseY<310) and mousePressed):
         electronCoordinates = [];
         electronCoordinates = li.getAllElectronCoordinate();
-
         fill (255)
-        rect(20,40,20,20)
-        fill (0)
-        rect(20,80,20,20)
-        rect(20,120,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
-        
+        rect(20,40,20,20)    
     else:
         print ("False")
         
@@ -119,12 +111,6 @@ def control():
         electronCoordinates = li.getAllElectronCoordinate();
         fill (255)
         rect(20,40,20,20)
-        fill (0)
-        rect(20,80,20,20)
-        rect(20,120,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
     else:
         print ("False")
         
@@ -134,12 +120,6 @@ def control():
         electronCoordinates = mg.getAllElectronCoordinate();
         fill (255)
         rect(20,80,20,20)
-        fill (0)
-        rect(20,40,20,20)
-        rect(20,120,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
     else:
         print ("False")
         
@@ -148,12 +128,6 @@ def control():
         electronCoordinates = mg.getAllElectronCoordinate();
         fill (255)
         rect(20,80,20,20)
-        fill (0)
-        rect(20,40,20,20)
-        rect(20,120,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
     else:
         print ("False")
         
@@ -163,12 +137,6 @@ def control():
         electronCoordinates = al.getAllElectronCoordinate();
         fill (255)
         rect(20,120,20,20)
-        fill (0)
-        rect(20,40,20,20)
-        rect(20,80,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
     else:
         print ("False")
         
@@ -177,12 +145,6 @@ def control():
         electronCoordinates = al.getAllElectronCoordinate();
         fill (255)
         rect(20,120,20,20)
-        fill (0)
-        rect(20,40,20,20)
-        rect(20,80,20,20)
-        text ("Lithium", 50,60)
-        text ("Magnesium", 50,100)
-        text ("Aluminium", 50,140)
     else:
         print ("False")
         
