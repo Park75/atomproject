@@ -1,0 +1,99 @@
+#Lithium =rect(20,40,20,20)
+#Magnesium =rect(20,80,20,20)
+#Aluminium =rect(20,120,20,20)
+
+totalFrames = 180
+
+def setup():
+    size(1500, 700)
+    noStroke()
+    fill(0)
+    textSize(20)
+    font = createFont("Corbel",30)
+    textFont(font)
+
+def draw():
+    rect(20,40,20,20)
+    rect(20,80,20,20)
+    rect(20,120,20,20)
+    text ("Lithium", 50,60)
+    text ("Magnesium", 50,100)
+    text ("Aluminium", 50,140)
+    
+#Lithium    
+    if((mouseX>20) and (mouseX<40) and (mouseY>40) and (mouseY<60) and mousePressed):
+        fill (255)
+        rect(20,40,20,20)
+        fill (0)
+        rect(20,80,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+        
+    else:
+        print ("False")
+        
+    if ((keyPressed) and ((key == "L") or (key == "l"))):
+        fill (255)
+        rect(20,40,20,20)
+        fill (0)
+        rect(20,80,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+#Magnesium        
+    if((mouseX>20) and (mouseX<40) and (mouseY>80) and (mouseY<100)and mousePressed):
+        fill (255)
+        rect(20,80,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+    if ((keyPressed) and ((key == "M") or (key == "m"))):
+        fill (255)
+        rect(20,80,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+#Aluminium
+    if((mouseX>20) and (mouseX<40) and (mouseY>120) and (mouseY<140)and mousePressed):
+        fill (255)
+        rect(20,120,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,80,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+    if ((keyPressed) and ((key == "A") or (key == "a"))):
+        fill (255)
+        rect(20,120,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,80,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+    
