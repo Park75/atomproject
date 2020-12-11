@@ -7,6 +7,8 @@ counter = 0.0;
 li = Atom;
 mg = Atom;
 al = Atom;
+totalFrames = 180;
+electronCoordinates = [];
 
 def setup():
     size(1500, 700);             # Fenstergrösse
@@ -20,11 +22,19 @@ def setup():
     mg = Atom.Atom(3, 2, 8, 2);  
     al = Atom.Atom(3, 2, 8, 3);  
     
+    noStroke()
+    fill(0)
+    textSize(20)
+    font = createFont("Corbel",30)
+    textFont(font)
+    
     
 def draw():
     global counter;
     translate(400, 250);       # Legt Nullkoordinate fest, könnte auch auf die Breite oder Länge des Fensters fokussiert werden
     background(255);
+    
+    control();
     
     percent = counter / totalFrames;
     atomCore();
@@ -35,8 +45,14 @@ def draw():
 
 # Atomkern wird gezeichnet
 def atomCore():
-    fill(0, 0, 0);
-    circle(0, 0, 50);
+    fill(0, 0, 0)
+    stroke(255)
+    circle(-15, 0, 30)
+    circle(0, 15, 30)
+    circle(15, 0, 30)
+    circle(0, -15, 30)
+    circle(0, 0, 30)
+    stroke(0)
     
 # einzelne Schalen des Atommodells werden gezeichnet 
 def drawLinesAtomShells():
@@ -47,14 +63,14 @@ def drawLinesAtomShells():
 
 # Zeichnen der einzelnen Elektronen, bei jedem erneuten Aufruf werden die Elektronen um den berechneten Winkel verschoben
 def render(percent):
-    global mg;
+    global electronCoordinates;
     angle = percent * HALF_PI;
     
     rotate(angle);                                             # Umdrehung um den angegebenen Winkel in Rad    
     
      
     # Abrufen und festhalten in der Liste electronCoordinates der Koordinaten für die darzustellende Elektornen
-    electronCoordinates = mg.getAllElectronCoordinate();
+    #electronCoordinates = mg.getAllElectronCoordinate();
     
     # Zeichnen jedes einzelnen Elektrons um es darzustellen
     for current_Electron in range(0, len(electronCoordinates)):
@@ -66,36 +82,107 @@ def render(percent):
    
 
 
-def Buttons():
 
-#Möglichkeit für Buttons
+#Lithium =rect(20,40,20,20)
+#Magnesium =rect(20,80,20,20)
+#Aluminium =rect(20,120,20,20)
 
-#1. Mouseposition
-    if((mouseX>40) and (mouseX<80) and (mouseY>20) and (mouseY<80)):
-        fill(123)
-    else:
-        fill(0) #Hier Beschriftung von Atom
-    rect(40,20,40,60)
-    
-    if((mouseX>100) and (mouseX<140) and (mouseY>20) and (mouseY<80)):
-        fill(123)
-    else:
-        fill(0) #Hier Beschriftung von Atom
-    rect(100,20,40,60)
-    
-#2.Keypress (Einfachste Lösung)
-    #if (keyPressed):   # If the key is pressed,
-        #line(20, 20, 80, 80)   # draw a line
-    #else:   # Otherwise,
-        #rect(40, 40, 20, 20)   # draw a rectangle
+def control():
+    global electronCoordinates;
+    # Steuerung / Auswahl Li, Mg, Al
+    rect(20,40,20,20)
+    rect(20,80,20,20)
+    rect(20,120,20,20)
+    text ("Lithium", 50,60)
+    text ("Magnesium", 50,100)
+    text ("Aluminium", 50,140)
+
+#Lithium    
+    if((mouseX>420) and (mouseX<440) and (mouseY>290) and (mouseY<310) and mousePressed):
+        electronCoordinates = [];
+        electronCoordinates = li.getAllElectronCoordinate();
+
+        fill (255)
+        rect(20,40,20,20)
+        fill (0)
+        rect(20,80,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
         
-#3.Mouseclicked (Kompliziert in Python)
- #fill(value)    
-    #rect(40, 100, 50, 50)
+    else:
+        print ("False")
         
-#def mouseClicked():
-    #global value
-    #if value == 0:
-        #value = 255
-    #else:
-        #value = 0
+    if ((keyPressed) and ((key == "L") or (key == "l"))):
+        electronCoordinates = [];
+        electronCoordinates = li.getAllElectronCoordinate();
+        fill (255)
+        rect(20,40,20,20)
+        fill (0)
+        rect(20,80,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+#Magnesium        
+    if((mouseX>20) and (mouseX<40) and (mouseY>80) and (mouseY<100)and mousePressed):
+        electronCoordinates = [];
+        electronCoordinates = mg.getAllElectronCoordinate();
+        fill (255)
+        rect(20,80,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+    if ((keyPressed) and ((key == "M") or (key == "m"))):
+        electronCoordinates = [];
+        electronCoordinates = mg.getAllElectronCoordinate();
+        fill (255)
+        rect(20,80,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,120,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+#Aluminium
+    if((mouseX>20) and (mouseX<40) and (mouseY>120) and (mouseY<140)and mousePressed):
+        electronCoordinates = [];
+        electronCoordinates = al.getAllElectronCoordinate();
+        fill (255)
+        rect(20,120,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,80,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
+    if ((keyPressed) and ((key == "A") or (key == "a"))):
+        electronCoordinates = [];
+        electronCoordinates = al.getAllElectronCoordinate();
+        fill (255)
+        rect(20,120,20,20)
+        fill (0)
+        rect(20,40,20,20)
+        rect(20,80,20,20)
+        text ("Lithium", 50,60)
+        text ("Magnesium", 50,100)
+        text ("Aluminium", 50,140)
+    else:
+        print ("False")
+        
