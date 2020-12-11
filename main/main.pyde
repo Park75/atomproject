@@ -7,12 +7,18 @@ counter = 0.0;
 li = Atom;
 mg = Atom;
 al = Atom;
-totalFrames = 180;
 electronCoordinates = [];
+nameAtom = "";
+cordinateYWhiteRect = 0;
+
 
 def setup():
     size(1500, 700);             # Fenstergrösse
     strokeWeight(2);             # Stärke der Linie
+    fill(0)
+    textSize(20)
+    font = createFont("Corbel",30)
+    textFont(font)
     
     # Erstellen des Atomes mg mit den Angaben, wie viel Elektronen sich auf den einzelnen Schalen befinden.
     global li;
@@ -22,12 +28,6 @@ def setup():
     mg = Atom.Atom(3, 2, 8, 2);  
     al = Atom.Atom(3, 2, 8, 3);  
     
-    noStroke()
-    fill(0)
-    textSize(20)
-    font = createFont("Corbel",30)
-    textFont(font)
-    
     
 def draw():
     global counter;
@@ -35,13 +35,16 @@ def draw():
     background(255);
     
     control();
-    
-    percent = counter / totalFrames;
+        
     atomCore();
     drawLinesAtomShells();
+    
+    # percent rechnet die prozentualle Verschiebung aus, aufgrund wie oft draw() bereits aufgerufen wurde. 
+    percent = counter / totalFrames;
     render(percent);      
     
     counter = counter + 1;
+
 
 # Atomkern wird gezeichnet
 def atomCore():
@@ -67,84 +70,93 @@ def render(percent):
     angle = percent * HALF_PI;
     
     rotate(angle);                                             # Umdrehung um den angegebenen Winkel in Rad    
-    
-     
-    # Abrufen und festhalten in der Liste electronCoordinates der Koordinaten für die darzustellende Elektornen
-    #electronCoordinates = mg.getAllElectronCoordinate();
-    
+
     # Zeichnen jedes einzelnen Elektrons um es darzustellen
     for current_Electron in range(0, len(electronCoordinates)):
         fill(255, 0, 0);                                           # Farbe Rot
         circle(electronCoordinates[current_Electron][0], electronCoordinates[current_Electron][1], 20);
-        fill(0, 0, 0);                                           # Farbe schwarz
-        rect(electronCoordinates[current_Electron][0]-5, electronCoordinates[current_Electron][1], 10, 1);
-        
-   
+        fill(0, 0, 0);                                             # Farbe schwarz
+        rect(electronCoordinates[current_Electron][0] - 5, electronCoordinates[current_Electron][1], 10, 1);
 
 
 
-#Lithium =rect(20,40,20,20)
-#Magnesium =rect(20,80,20,20)
-#Aluminium =rect(20,120,20,20)
 
 def control():
     global electronCoordinates;
-    # Steuerung / Auswahl Li, Mg, Al
-    rect(20,40,20,20)
-    rect(20,80,20,20)
-    rect(20,120,20,20)
-    text ("Lithium", 50,60)
-    text ("Magnesium", 50,100)
-    text ("Aluminium", 50,140)
+    global nameAtom;
+    global cordinateYWhiteRect;
+    
+    # Anzeige der Navigation
+    navigationBar();
 
 #Lithium    
-    if((mouseX>420) and (mouseX<440) and (mouseY>290) and (mouseY<310) and mousePressed):
+    if((mouseX>650) and (mouseX<670) and (mouseY>250) and (mouseY<270) and mousePressed):
+        nameAtom = "Lithium";
         electronCoordinates = [];
         electronCoordinates = li.getAllElectronCoordinate();
-        fill (255)
-        rect(20,40,20,20)    
-    else:
-        print ("False")
-        
+        cordinateYWhiteRect = 0;
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)   
+
     if ((keyPressed) and ((key == "L") or (key == "l"))):
+        nameAtom = "Lithium";
         electronCoordinates = [];
         electronCoordinates = li.getAllElectronCoordinate();
-        fill (255)
-        rect(20,40,20,20)
-    else:
-        print ("False")
+        cordinateYWhiteRect = 0;
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)
         
 #Magnesium        
-    if((mouseX>20) and (mouseX<40) and (mouseY>80) and (mouseY<100)and mousePressed):
+    if((mouseX>650) and (mouseX<670) and (mouseY>290) and (mouseY<310)and mousePressed):
+        nameAtom = "Magnesium";
         electronCoordinates = [];
         electronCoordinates = mg.getAllElectronCoordinate();
-        fill (255)
-        rect(20,80,20,20)
-    else:
-        print ("False")
+        cordinateYWhiteRect = 40;
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)
         
     if ((keyPressed) and ((key == "M") or (key == "m"))):
+        nameAtom = "Magnesium";
         electronCoordinates = [];
         electronCoordinates = mg.getAllElectronCoordinate();
         fill (255)
-        rect(20,80,20,20)
-    else:
-        print ("False")
+        rect(250,40,20,20)
+        cordinateYWhiteRect = 40;
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)
         
 #Aluminium
-    if((mouseX>20) and (mouseX<40) and (mouseY>120) and (mouseY<140)and mousePressed):
+    if((mouseX>650) and (mouseX<670) and (mouseY>330) and (mouseY<350)and mousePressed):
+        nameAtom = "Aluminium";
         electronCoordinates = [];
         electronCoordinates = al.getAllElectronCoordinate();
-        fill (255)
-        rect(20,120,20,20)
-    else:
-        print ("False")
+        cordinateYWhiteRect = 80
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)
         
     if ((keyPressed) and ((key == "A") or (key == "a"))):
+        nameAtom = "Aluminium";
         electronCoordinates = [];
         electronCoordinates = al.getAllElectronCoordinate();
-        fill (255)
-        rect(20,120,20,20)
-    else:
-        print ("False")
+        cordinateYWhiteRect = 80
+        # weisses Rechteck (zur Anzeige des aktuellen Atoms) überschrieben, damit es nicht mehr angezeigt wird.
+        rectWhite = rect(0,0,0,0)
         
+    fill (255);
+    rectWhite = rect(250,cordinateYWhiteRect,20,20);
+      
+
+# Anzeige der Navigation
+def navigationBar():
+    global nameAtom;
+    global cordinateYWhiteRect;
+    
+    # Steuerung / Auswahl Li, Mg, Al
+    rect(250, 0, 20, 20)
+    rect(250, 40, 20, 20)
+    rect(250, 80, 20, 20)
+    text ("Lithium", 280, 20)
+    text ("Magnesium", 280, 60)
+    text ("Aluminium", 280, 100)
+    fill(0)
+    text(nameAtom, -50, -200)
