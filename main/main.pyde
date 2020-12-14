@@ -90,18 +90,30 @@ def control():
     navigationBar();
 
 #Lithium    
+    # Abfrage: Befindet sich die Position der Mausposition beim Klicken auf dem entsprechenden Feld?
     if((mouseX>650) and (mouseX<670) and (mouseY>250) and (mouseY<270) and mousePressed):
+        #Titel Name des Atoms
         nameAtom = "Lithium";
+        
+        #Anzeigen des Atoms und vorheriges Löschen der angezeigten Elektronen
         electronCoordinates = [];
         electronCoordinates = li.getAllElectronCoordinate();
+        
+        #Koordinaten für weisses Rechteck anpassen.
         cordinateYWhiteRect = 0;
         # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)   
 
+    # Abfrage: Wird der Buchstabe L oder l auf der Tastatur gedrückt?
     if ((keyPressed) and ((key == "L") or (key == "l"))):
+        #Titel Name des Atoms
         nameAtom = "Lithium";
+        
+        #Anzeigen des Atoms und vorheriges Löschen der angezeigten Elektronen
         electronCoordinates = [];
         electronCoordinates = li.getAllElectronCoordinate();
+        
+        #Koordinaten für weisses Rechteck anpassen.
         cordinateYWhiteRect = 0;
         # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)
@@ -112,7 +124,6 @@ def control():
         electronCoordinates = [];
         electronCoordinates = mg.getAllElectronCoordinate();
         cordinateYWhiteRect = 40;
-        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)
         
     if ((keyPressed) and ((key == "M") or (key == "m"))):
@@ -122,7 +133,6 @@ def control():
         fill (255)
         rect(250,40,20,20)
         cordinateYWhiteRect = 40;
-        # weisses Rechteck (zur Anzeige des aktuellen Atoms) wird überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)
         
 #Aluminium
@@ -131,7 +141,6 @@ def control():
         electronCoordinates = [];
         electronCoordinates = al.getAllElectronCoordinate();
         cordinateYWhiteRect = 80
-        # weisses Rechteck (zur Anzeige des aktuellen Atoms) überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)
         
     if ((keyPressed) and ((key == "A") or (key == "a"))):
@@ -139,7 +148,6 @@ def control():
         electronCoordinates = [];
         electronCoordinates = al.getAllElectronCoordinate();
         cordinateYWhiteRect = 80
-        # weisses Rechteck (zur Anzeige des aktuellen Atoms) überschrieben, damit es nicht mehr angezeigt wird.
         rectWhite = rect(0,0,0,0)
         
     fill (255);
